@@ -11,7 +11,11 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.3.4",
+    "@fontsource/bai-jamjuree": "^5.0.8",
     "astro": "^4.0.8",
+    "autoprefixer": "^10.4.16",
+    "cssnano": "^6.0.2",
+    "sass": "^1.69.5",
     "typescript": "^5.3.3"
   }
 }

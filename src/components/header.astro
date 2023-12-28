@@ -1,0 +1,243 @@
+<header>
+    <div class="container header__container">
+        <div class="logo">
+            <div class="logo__box">Y</div>
+            <div class="logo__text">Yash Bansod</div>
+        </div>
+
+        <div class="nav__container">
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#work">Work</a></li>
+                </ul>
+            </nav>
+
+            <a class="nav__contact-button" href="#contact"> contact</a>
+        </div>
+
+        <div class="header__icon-container">
+            <div class="icon theme__icon">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    style="fill: currentColor;transform: ;msFilter:;"
+                    ><path
+                        d="M20.742 13.045a8.088 8.088 0 0 1-2.077.271c-2.135 0-4.14-.83-5.646-2.336a8.025 8.025 0 0 1-2.064-7.723A1 1 0 0 0 9.73 2.034a10.014 10.014 0 0 0-4.489 2.582c-3.898 3.898-3.898 10.243 0 14.143a9.937 9.937 0 0 0 7.072 2.93 9.93 9.93 0 0 0 7.07-2.929 10.007 10.007 0 0 0 2.583-4.491 1.001 1.001 0 0 0-1.224-1.224zm-2.772 4.301a7.947 7.947 0 0 1-5.656 2.343 7.953 7.953 0 0 1-5.658-2.344c-3.118-3.119-3.118-8.195 0-11.314a7.923 7.923 0 0 1 2.06-1.483 10.027 10.027 0 0 0 2.89 7.848 9.972 9.972 0 0 0 7.848 2.891 8.036 8.036 0 0 1-1.484 2.059z"
+                    ></path></svg
+                >
+            </div>
+
+            <div id="menu_icon" class="icon menu__icon">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    style="fill: currentColor;transform: ;msFilter:;"
+                    ><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path></svg
+                >
+            </div>
+        </div>
+
+        <!-- mobile navbar  -->
+
+        <div id="mobile_nav" class="mobile__navbar">
+            <div class="mobile__navbar-container">
+                <div class="logo">
+                    <div class="logo__box">Y</div>
+                    <div class="logo__text">Yash Bansod</div>
+                </div>
+
+                <div class="nav__container">
+                    <nav>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#work">Work</a></li>
+                        </ul>
+                    </nav>
+
+                    <a class="nav__contact-button" href="#contact"> contact</a>
+                </div>
+
+                <div id="close_icon" class="icon close__icon">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"
+                        ><path
+                            d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"
+                        ></path></svg
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    const menuIcon = document.querySelector("#menu_icon") as HTMLDivElement;
+    const closeIcon = document.querySelector("#close_icon") as HTMLDivElement;
+    const mobileNavbar = document.querySelector("#mobile_nav") as HTMLDivElement;
+
+    menuIcon.addEventListener("click" , (e : Event) => {
+        mobileNavbar.classList.add("show__mobile-navbar")
+    });
+
+    closeIcon.addEventListener("click" , () => {
+        mobileNavbar.classList.remove("show__mobile-navbar")
+    })
+
+</script>
+
+<style lang="scss">
+    header {
+        min-height: 10rem;
+        padding: 2rem 0;
+    }
+
+    .header__container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .logo__box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 3.2rem;
+            height: 3.2rem;
+            background-color: var(--text);
+            color: var(--background);
+            font-weight: 700;
+            font-size: 1.6rem;
+            border-radius: 50%;
+
+            //  Tablet
+            @media (481px <= width <= 768px) {
+                width: 4.6rem;
+                height: 4.6rem;
+                font-size: 2.4rem;
+            }
+        }
+
+        .logo__text {
+            font-size: 2.4rem;
+        }
+    }
+
+    .nav__container {
+        display: none;
+        align-items: center;
+        gap: 4rem;
+
+        // Laptop
+        @media (769px <= width) {
+            display: flex;
+        }
+
+        nav {
+            ul {
+                display: flex;
+                gap: 2rem;
+
+                li {
+                    font-size: 1.6rem;
+                    a {
+                        color: var(--text-light);
+                    }
+                }
+            }
+        }
+    }
+
+    .nav__contact-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 2rem;
+        font-size: 1.6rem;
+        background-color: var(--text);
+        color: var(--background);
+    }
+
+    .header__icon-container {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+
+        // Laptop
+        @media (769px <= width) {
+            display: none;
+        }
+
+        .menu__icon {
+            background-color: var(--text);
+            color: var(--background);
+        }
+    }
+
+    .mobile__navbar {
+        position: absolute;
+        width: 100%;
+        top:  -100%;
+        left: 0;
+        z-index: 10;
+        backdrop-filter: blur(4px);
+        transition: all .3s ease-in-out;
+
+        // Laptop
+        @media (769px <= width) {
+            display: none;
+        }
+
+        .mobile__navbar-container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            background-color: var(--background);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 4rem 0;
+            gap: 4rem;
+
+            .logo {
+                flex-direction: column;
+
+            }
+
+            .nav__container {
+                display: flex;
+                flex-direction: column;
+
+                ul {
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+
+            .close__icon {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+        }
+    }
+
+    .show__mobile-navbar {
+        top: 0;
+        bottom: 0;
+    }
+</style>
