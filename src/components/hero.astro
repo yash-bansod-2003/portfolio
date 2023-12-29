@@ -1,3 +1,7 @@
+---
+import { siteConfig } from "@/config/site";
+---
+
 <section class="container hero" id="home">
     <div class="hero__info-container">
         <div class="hero__info-wrapper">
@@ -26,7 +30,11 @@
                         ></path></svg
                     >
                 </a>
-                <a class="btn btn-outline" href="">
+                <a
+                    class="btn btn-outline"
+                    href={siteConfig.gitHub}
+                    target="_blank"
+                >
                     Check Github
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

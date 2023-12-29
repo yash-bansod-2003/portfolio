@@ -3,14 +3,15 @@ interface Props {
     Id: string;
     title: string;
     description: string;
+    image : string;
 }
 
-const { Id, title, description } = Astro.props;
+const { Id, title, description , image} = Astro.props;
 ---
 
 <div class="card">
     <div id={Id} class="card__header">
-        <img src="/backend.avif" alt="" />
+        <img src={image} alt={`${title}-image`} />
     </div>
     <div class="card__content">
         <h2>{title}</h2>
@@ -37,11 +38,15 @@ const { Id, title, description } = Astro.props;
         width: 100%;
         aspect-ratio: 16/9;
         overflow: hidden;
-
+        display: flex;
+        justify-content: center;
+        
         img {
-            width: 100%;
+            border-bottom: .1rem solid var(--text);
+            width: 50%;
             transition: 0.5s all ease-in-out;
-
+            color: var(--text);
+            
             &:hover {
                 animation-play-state: paused;
                 transform: scale(1.04);
@@ -64,7 +69,7 @@ const { Id, title, description } = Astro.props;
             }
         }
         p {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             text-align: justify;
         }
     }

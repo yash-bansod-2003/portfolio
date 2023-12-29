@@ -7,6 +7,10 @@ import "@fontsource/bai-jamjuree/400.css";
 import "@fontsource/bai-jamjuree/500.css";
 import "@fontsource/bai-jamjuree/600.css";
 import "@fontsource/bai-jamjuree/700.css";
+import "@fontsource/roboto-condensed/400.css";
+import "@fontsource/roboto-condensed/700.css";
+
+import { siteConfig } from "@/config/site";
 
 const { title } = Astro.props;
 ---
@@ -15,7 +19,7 @@ const { title } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content={siteConfig.description} />
 		<meta
 			name="viewport"
 			content="width=device-width"
@@ -23,6 +27,12 @@ const { title } = Astro.props;
 		/>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<meta property="og:title" content={`${siteConfig.name} portfolio`} />
+		<meta property="og:type" content="portfolio" />
+		<meta property="og:url" content={siteConfig.url} />
+		<meta property="og:image" content={`${siteConfig.url}/og.png`} />
+		<meta property="og:site_name" content={siteConfig.name} />
+		<meta property="og:description" content={siteConfig.description} />
 		<title>{title}</title>
 	</head>
 	<body>
@@ -101,8 +111,17 @@ const { title } = Astro.props;
 		font-size: 62.5%;
 	}
 
+	p {
+		font-weight: 400;
+	}
+
+	h2 {
+		font-weight: 700;
+	}
+
 	body {
 		font-family: "Bai Jamjuree", sans-serif;
+		// font-family: 'Roboto Condensed', sans-serif;
 		color: var(--text);
 		background-color: var(--background);
 	}
