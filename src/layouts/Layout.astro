@@ -36,6 +36,12 @@ const { title } = Astro.props;
 		--text-light: #555;
 	}
 
+	html.dark {
+		--background: #000;
+		--text: #fafafa;
+		--text-light: rgba(225, 225, 225, 0.9);
+	}
+
 	/*
 
 	@custom-media --mobile (width <= 480px);
@@ -107,9 +113,8 @@ const { title } = Astro.props;
 		max-width: 1200px;
 		margin: 0 auto;
 		padding: 0 1rem;
-
 		// Laptop
-		@media (769px <= width <= 1024px) {
+		@media (769px <= width) {
 			padding: 0;
 		}
 	}
@@ -127,4 +132,65 @@ const { title } = Astro.props;
 			height: 4rem;
 		}
 	}
+
+	.btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: fit-content;
+		background-color: var(--text);
+		color: var(--background);
+		border: 0.1rem solid var(--background);
+		font-size: 1.6rem;
+		transition: transform 0.6s ease-in-out;
+
+		&:hover {
+			background-color: var(--background);
+			color: var(--text);
+			border: 0.1rem dotted var(--text);
+		}
+	}
+
+	.btn-outline {
+		background-color: var(--background);
+		color: var(--text);
+		border: 0.1rem solid var(--text);
+
+		&:hover {
+			background-color: var(--text);
+			color: var(--background);
+			border: 0.1rem solid var(--background);
+		}
+	}
 </style>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"
+	integrity="sha512-0z8URjGET6GWnS1xcgiLBZBzoaS8BNlKayfZyQNKz4IRp+s7CKXx0yz7Eco2+TcwoeMBa5KMwmTX7Kus7Fa5Uw=="
+	crossorigin="anonymous"
+	referrerpolicy="no-referrer"></script>
+<script is:inline>
+	const getThemePreference = () => {
+		if (
+			typeof localStorage !== "undefined" &&
+			localStorage.getItem("theme")
+		) {
+			return localStorage.getItem("theme");
+		}
+		return window.matchMedia("(prefers-color-scheme: dark)").matches
+			? "dark"
+			: "light";
+	};
+	const isDark = getThemePreference() === "dark";
+	document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+
+	if (typeof localStorage !== "undefined") {
+		const observer = new MutationObserver(() => {
+			const isDark = document.documentElement.classList.contains("dark");
+			localStorage.setItem("theme", isDark ? "dark" : "light");
+		});
+		observer.observe(document.documentElement, {
+			attributes: true,
+			attributeFilter: ["class"],
+		});
+	}
+</script>

@@ -1,0 +1,76 @@
+---
+import ServiceCard from "@/components/cards/service.card.astro";
+---
+
+<section id="services">
+    <div class="container service__container">
+        <div class="service__intro">
+            <h2>I can provide some services</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
+                error nostrum placeat totam provident voluptate exercitationem?
+            </p>
+        </div>
+
+        <div class="service__card-container">
+            <ServiceCard
+                Id="backend__card"
+                title="Backend Development"
+                description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et minus illo, quos expedita molestias nemo culpa nostrum. Expedita, error distinctio."
+            />
+            <ServiceCard
+                Id="frontend__card"
+                title="Frontend Development"
+                description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et minus illo, quos expedita molestias nemo culpa nostrum. Expedita, error distinctio."
+            />
+            <ServiceCard
+                Id="app__card"
+                title="Aplication Development"
+                description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et minus illo, quos expedita molestias nemo culpa nostrum. Expedita, error distinctio."
+            />
+        </div>
+    </div>
+</section>
+
+<style lang="scss">
+    #services {
+        height: 100vh;
+    }
+
+    .service__container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .service__intro {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 2rem;
+
+        h2 {
+            font-size: 4.8rem;
+        }
+
+        p {
+            font-size: 2.4rem;
+            max-width: 60vw;
+        }
+    }
+
+    .service__card-container {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: repeat(1, 1fr);
+        gap: 3rem;
+        
+        // Laptop
+        @media (769px <= width) {
+            grid-template-rows: repeat(1, 1fr);
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+</style>
