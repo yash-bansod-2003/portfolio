@@ -10,7 +10,7 @@ const { Id, title, description } = Astro.props;
 
 <div class="card">
     <div id={Id} class="card__header">
-        <!-- <img src="/backend.avif" alt="" /> -->
+        <img src="/backend.avif" alt="" />
     </div>
     <div class="card__content">
         <h2>{title}</h2>
@@ -36,8 +36,16 @@ const { Id, title, description } = Astro.props;
     .card__header {
         width: 100%;
         aspect-ratio: 16/9;
+        overflow: hidden;
+
         img {
             width: 100%;
+            transition: 0.5s all ease-in-out;
+
+            &:hover {
+                animation-play-state: paused;
+                transform: scale(1.04);
+            }
         }
     }
 
@@ -48,6 +56,12 @@ const { Id, title, description } = Astro.props;
 
         h2 {
             font-size: 2.4rem;
+            text-align: center;
+            
+            // Laptop
+            @media (769px <= width) {
+                text-align: left;
+            }
         }
         p {
             font-size: 1.6rem;
@@ -68,133 +82,4 @@ const { Id, title, description } = Astro.props;
     }
 </style>
 
-<script>
-    import Matter from "matter-js";
-    
-    // module aliases
-    let Engine = Matter.Engine,
-        Render = Matter.Render,
-        Runner = Matter.Runner,
-        Bodies = Matter.Bodies,
-        Composite = Matter.Composite,
-        Mouse = Matter.Mouse,
-        MouseConstraint = Matter.MouseConstraint;
-
-    export const createMatterCanvas = (id: string): void => {
-        // create an engine
-        let engine = Engine.create();
-
-        //Get computed Widths and Heights
-        const container = document.querySelector(
-            ".card__header",
-        ) as HTMLDialogElement;
-
-        const getInNumber = (str: string | undefined): number => {
-            return Number(str?.replace("px", ""));
-        };
-
-        let containerWidth = getInNumber(
-            document.defaultView?.getComputedStyle(container).width,
-        );
-        let containerHeight = getInNumber(
-            document.defaultView?.getComputedStyle(container).height,
-        );
-
-        console.log(containerWidth, containerHeight);
-
-        // create a renderer
-        let render = Render.create({
-            element: document.querySelector(`#${id}`) as HTMLDialogElement,
-            engine: engine,
-            options: {
-                width: containerWidth,
-                height: containerHeight,
-            },
-        });
-
-        // create two boxes and a ground
-        var boxA = Bodies.rectangle(10, 10, 40, 40);
-        var boxB = Bodies.rectangle(40, 20, 40, 40);
-        let reactLogo = Bodies.rectangle(50, 50, 64, 64, {
-            render: {
-                strokeStyle: "#ffffff",
-                sprite: {
-                    texture: "../../../public/react.png",
-                    xScale: 1,
-                    yScale: 1,
-                },
-            },
-        });
-
-        var ground = Bodies.rectangle(
-            0,
-            containerHeight,
-            containerWidth * 2,
-            10,
-            {
-                isStatic: true,
-            },
-        );
-
-        var groundRight = Bodies.rectangle(
-            containerWidth,
-            0,
-            10,
-            containerHeight * 2,
-            {
-                isStatic: true,
-            },
-        );
-
-        var groundLeft = Bodies.rectangle(0, 0, 10, containerHeight * 2, {
-            isStatic: true,
-        });
-
-        var groundTop = Bodies.rectangle(0, 0, containerWidth * 2, 10, {
-            isStatic: true,
-        });
-
-        let world = engine.world;
-
-        // add all of the bodies to the world
-        Composite.add(world, [
-            boxA,
-            boxB,
-            ground,
-            groundRight,
-            groundLeft,
-            groundTop,
-            reactLogo,
-        ]);
-
-        // run the renderer
-        Render.run(render);
-
-        // create runner
-        var runner = Runner.create();
-
-        // add mouse control
-        let mouse = Mouse.create(render.canvas),
-            mouseConstraint = MouseConstraint.create(engine, {
-                mouse: mouse,
-                constraint: {
-                    stiffness: 0.2,
-                    render: {
-                        visible: false,
-                    },
-                },
-            });
-
-        Composite.add(world, mouseConstraint);
-
-        // keep the mouse in sync with rendering
-        render.mouse = mouse;
-
-        // run the engine
-        Runner.run(runner, engine);
-    };
-
-    createMatterCanvas("backend__card");
-    createMatterCanvas("frontend__card");
-    createMatterCanvas("app__card");
-</script>
+<script></script>
