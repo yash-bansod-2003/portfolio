@@ -1,0 +1,79 @@
+---
+import WorkCard from "@/components/cards/work.card.astro";
+import { data } from "@/static/projects";
+---
+
+<section id="work" class="container">
+    <div class="container work__container">
+        <div class="work__intro">
+            <h2>Work</h2>
+        </div>
+
+        <div class="work__card-container">
+            {
+                data
+                    .reverse()
+                    .map((item) => (
+                        <WorkCard
+                            title={item.name}
+                            description={item.description}
+                            date={item.date}
+                            image={item.image}
+                        />
+                    ))
+            }
+        </div>
+    </div>
+</section>
+
+<style lang="scss">
+    #work {
+        padding: 4rem 0;
+
+        // Laptop
+        @media (769px <= width) {
+            min-height: 100vh;
+            gap: 0;
+        }
+    }
+
+    .work__container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+
+        @media (769px <= width) {
+            gap: 5rem;
+        }
+    }
+
+    .work__intro {
+        h2 {
+            font-size: 4.8rem;
+            position: relative;
+            display: inline-block;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 0.5rem;
+                background-color: var(--text);
+                animation: animate-title 3s ease-in-out infinite;
+            }
+        }
+    }
+
+    .work__card-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 3rem;
+
+        // Laptop
+        @media (769px <= width) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+</style>
