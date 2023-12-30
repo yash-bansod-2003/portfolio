@@ -1,19 +1,22 @@
 ---
 import { siteConfig } from "@/config/site";
+import { heroConfig } from "@/config/hero";
 ---
 
 <section class="container hero" id="home">
     <div class="hero__info-container">
         <div class="hero__info-wrapper">
             <div class="hero__intro-wrapper">
-                <p>👋 Hello i'am <span>Yash Bansod</span></p>
-                <h1>Fullstack Developer</h1>
+                <p>
+                    <b class="wave-hand">👋</b> Hello i'am <span
+                        >{heroConfig.name}</span
+                    >
+                </p>
+                <h1>{heroConfig.title}</h1>
             </div>
 
             <p class="hero__intro-description">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Veritatis commodi illum sed ducimus minima ipsa aliquid, maiores
-                id dolorum similique?
+                {heroConfig.description}
             </p>
 
             <div class="hero__button-wrapper">
@@ -64,7 +67,7 @@ import { siteConfig } from "@/config/site";
         padding: 4rem 0;
         gap: 4rem;
         align-items: center;
-
+        border-bottom: 0.5rem dotted var(--text);
         // Laptop
         @media (769px <= width) {
             flex-direction: row;
@@ -120,8 +123,16 @@ import { siteConfig } from "@/config/site";
         }
     }
 
+    .wave-hand {
+        display: inline-block;
+        transform-origin: 70% 70%;
+        animation: wave-animation 2.5s linear infinite;
+    }
+
     .hero__intro-description {
         font-size: 1.8rem;
+        font-weight: 400;
+        line-height: 3rem;
         text-align: justify;
         width: 80vw;
 
@@ -174,8 +185,8 @@ import { siteConfig } from "@/config/site";
 
             img {
                 width: 100%;
-                animation: animate-image 2s linear infinite;
                 transition: 0.5s all ease-in-out;
+                animation: animate-image 2s linear infinite , shake 20s ease-in 3s infinite;
 
                 &:hover {
                     animation-play-state: paused;
@@ -194,6 +205,69 @@ import { siteConfig } from "@/config/site";
         }
         100% {
             filter: grayscale(0);
+        }
+    }
+
+    @keyframes wave-animation {
+        0% {
+            transform: rotate(0deg);
+        }
+        10% {
+            transform: rotate(14deg);
+        }
+        20% {
+            transform: rotate(-8deg);
+        }
+        30% {
+            transform: rotate(14deg);
+        }
+        40% {
+            transform: rotate(-4deg);
+        }
+        50% {
+            transform: rotate(10deg);
+        }
+        60% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+
+    @keyframes shake {
+        0% {
+            transform: translate(1px, 1px) rotate(0deg);
+        }
+        10% {
+            transform: translate(-1px, -2px) rotate(-1deg);
+        }
+        20% {
+            transform: translate(-3px, 0px) rotate(1deg);
+        }
+        30% {
+            transform: translate(3px, 2px) rotate(0deg);
+        }
+        40% {
+            transform: translate(1px, -1px) rotate(1deg);
+        }
+        50% {
+            transform: translate(-1px, 2px) rotate(-1deg);
+        }
+        60% {
+            transform: translate(-3px, 1px) rotate(0deg);
+        }
+        70% {
+            transform: translate(3px, 1px) rotate(-1deg);
+        }
+        80% {
+            transform: translate(-1px, -1px) rotate(1deg);
+        }
+        90% {
+            transform: translate(1px, 2px) rotate(0deg);
+        }
+        100% {
+            transform: translate(1px, -2px) rotate(-1deg);
         }
     }
 </style>

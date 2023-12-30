@@ -5,11 +5,7 @@ import ServiceCard from "@/components/cards/service.card.astro";
 <section id="services">
     <div class="container service__container">
         <div class="service__intro">
-            <h2>I can provide some services</h2>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
-                error nostrum placeat totam provident voluptate exercitationem?
-            </p>
+            <h2>services</h2>
         </div>
 
         <div class="service__card-container">
@@ -38,6 +34,7 @@ import ServiceCard from "@/components/cards/service.card.astro";
 <style lang="scss">
     #services {
         height: 100vh;
+        padding: 4rem 0;
     }
 
     .service__container {
@@ -54,14 +51,21 @@ import ServiceCard from "@/components/cards/service.card.astro";
     }
 
     .service__intro {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 2rem;
 
         h2 {
             font-size: 4.8rem;
+            position: relative;
+            display: inline-block;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: .5rem;
+                background-color: var(--text);
+                animation: animate-title 3s ease-in-out infinite;
+            }
         }
 
         p {
@@ -75,6 +79,18 @@ import ServiceCard from "@/components/cards/service.card.astro";
         }
     }
 
+    @keyframes animate-title {
+        0%{
+            width: 2%;
+        };
+        50%{
+            width: 80%;
+        };
+        100%{
+            width: 2%;
+        }
+
+    }
     .service__card-container {
         display: grid;
         grid-template-rows: repeat(3, 1fr);
