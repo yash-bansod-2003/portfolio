@@ -38,11 +38,9 @@ const { Id, title, description , image} = Astro.props;
         justify-content: center;
         
         img {
-            border-bottom: .1rem solid var(--text);
-            width: 50%;
+            width: 100%;
             transition: 0.5s all ease-in-out;
-            color: var(--text);
-            
+           
             &:hover {
                 animation-play-state: paused;
                 transform: scale(1.04);
@@ -53,21 +51,22 @@ const { Id, title, description , image} = Astro.props;
     .card__content {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 1rem;
 
         h2 {
             font-size: 2.4rem;
             text-align: center;
-            
+
             // Laptop
             @media (769px <= width) {
-                
+                text-align: start;
             }
         }
         p {
             font-size: 1.8rem;
             line-height: 3rem;
             text-align: justify;
+            color: var(--text-light);
         }
     }
 </style>
