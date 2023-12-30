@@ -89,7 +89,7 @@ import { ModeToggle } from "@/components/mode-toggle";
     ) as HTMLDivElement;
     const navLinks = document.querySelectorAll(".nav__link") as NodeList;
 
-    menuIcon.addEventListener("click", (e: Event) => {
+    menuIcon.addEventListener("click", () => {
         mobileNavbar.classList.add("show__mobile-navbar");
     });
 
