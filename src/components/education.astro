@@ -1,0 +1,89 @@
+---
+import EducationCard from "@/components/cards/education.card.astro";
+---
+
+<section id="education">
+    <div class="container education__container">
+        <div class="education__intro">
+            <h2>Education</h2>
+        </div>
+
+        <div class="education__card-container">
+            <EducationCard
+                title="High School (10th Grade)"
+                school="Jawahar Navodaya Vidyalaya Navsari Amravati (CBSE)"
+                date="08/13 - 03/18"
+                score={80.3}
+            />
+            <EducationCard
+                title="Intermediate School (12th Grade)"
+                school="Jawahar Navodaya Vidyalaya Navsari Amravati (CBSE)"
+                date="07/18 - 05/20"
+                score={83}
+            />
+            <EducationCard
+                title="Under Graduate (College)"
+                school="Sipna College Of Engineering And Technology Amravati"
+                date="2021 - 2024"
+                score={8.4}
+                type="c"
+            />
+        </div>
+    </div>
+</section>
+
+<style lang="scss">
+    #education {
+        padding: 4rem 0;
+
+         // Laptop
+         @media (769px <= width) {
+            height: 100vh;
+            gap: 0;
+        }
+    }
+
+    .education__container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 3rem;
+        
+        // Laptop
+        @media (769px <= width) {
+            gap: 0;
+        }
+    }
+
+    .education__intro {
+        h2 {
+            font-size: 4.8rem;
+            position: relative;
+            display: inline-block;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 0.5rem;
+                background-color: var(--text);
+                animation: animate-title 3s ease-in-out infinite;
+            }
+        }
+    }
+
+    .education__card-container {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: repeat(1, 1fr);
+        gap: 3rem;
+
+        // Laptop
+        @media (769px <= width) {
+            grid-template-rows: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+</style>

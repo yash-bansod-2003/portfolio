@@ -12,7 +12,7 @@ import { heroConfig } from "@/config/hero";
                         >{heroConfig.name}</span
                     >
                 </p>
-                <h1>{heroConfig.title}</h1>
+                <h1>Fullstack Developer</h1>
             </div>
 
             <p class="hero__intro-description">
@@ -186,7 +186,9 @@ import { heroConfig } from "@/config/hero";
             img {
                 width: 100%;
                 transition: 0.5s all ease-in-out;
-                animation: animate-image 2s linear infinite , shake 20s ease-in 3s infinite;
+                animation:
+                    animate-image 2s linear infinite,
+                    shake 20s ease-in 3s infinite;
 
                 &:hover {
                     animation-play-state: paused;

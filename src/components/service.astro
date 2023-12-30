@@ -33,7 +33,12 @@ import ServiceCard from "@/components/cards/service.card.astro";
 
 <style lang="scss">
     #services {
-        height: 100vh;
+        
+        // Laptop
+        @media (769px <= width) {
+            height: 100vh;
+            gap: 0;
+        }
         padding: 4rem 0;
     }
 
@@ -51,7 +56,6 @@ import ServiceCard from "@/components/cards/service.card.astro";
     }
 
     .service__intro {
-
         h2 {
             font-size: 4.8rem;
             position: relative;
@@ -62,7 +66,7 @@ import ServiceCard from "@/components/cards/service.card.astro";
                 position: absolute;
                 left: 0;
                 bottom: 0;
-                height: .5rem;
+                height: 0.5rem;
                 background-color: var(--text);
                 animation: animate-title 3s ease-in-out infinite;
             }
@@ -80,16 +84,15 @@ import ServiceCard from "@/components/cards/service.card.astro";
     }
 
     @keyframes animate-title {
-        0%{
-            width: 2%;
-        };
-        50%{
-            width: 80%;
-        };
-        100%{
+        0% {
             width: 2%;
         }
-
+        50% {
+            width: 80%;
+        }
+        100% {
+            width: 2%;
+        }
     }
     .service__card-container {
         display: grid;

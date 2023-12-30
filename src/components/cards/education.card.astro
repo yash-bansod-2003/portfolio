@@ -1,0 +1,120 @@
+---
+interface Props {
+    title: string;
+    school: string;
+    date: string;
+    score: number;
+    type?: "s" | "c";
+}
+
+const { title, school, date, score, type } = Astro.props;
+---
+
+<div class="card">
+    <div class="card__header">
+        <div>
+            <p>{title}</p>
+            <h2>{school}</h2>
+        </div>
+        <div>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                style="fill: currentColor;transform: ;msFilter:;"
+                ><path
+                    d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
+                ></path></svg
+            >
+        </div>
+    </div>
+
+    <div class="card__content">
+        <div>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                style="fill: currentColor;transform: ;msFilter:;"
+                ><path
+                    d="M21 20V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2zM9 18H7v-2h2v2zm0-4H7v-2h2v2zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm2-5H5V7h14v2z"
+                ></path></svg
+            >
+        </div>
+        <p>{date}</p>
+    </div>
+
+    <div class="card__footer">
+        <p>{type === "c" ? "CGPA" : "score"} : <span>{score}</span></p>
+    </div>
+</div>
+
+<style lang="scss">
+    .card {
+        height: 100%;
+        width: 100%;
+        border: 0.1rem solid var(--text);
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        transition: all 0.3s linear;
+        cursor: pointer;
+
+        &:hover {
+            .card__header {
+                div {
+                    svg {
+                        transform: rotate(-45deg);
+                    }
+                }
+            }
+
+            transform: scale(1.009);
+        }
+    }
+
+    .card__header {
+        display: flex;
+        justify-content: space-between;
+
+        div:nth-child(1) {
+            display: flex;
+            flex-direction: column;
+            font-weight: bold;
+            gap: 1.5rem;
+
+            p {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 2.4rem;
+            }
+        }
+    }
+
+    .card__content {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        p {
+            font-size: 1.6rem;
+        }
+    }
+
+    .card__footer {
+        p {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--text-light);
+
+            span {
+                color: var(--text);
+            }
+        }
+    }
+</style>
